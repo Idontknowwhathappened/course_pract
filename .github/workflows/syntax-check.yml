@@ -13,12 +13,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Загрузка и установка Visual Studio Build Tools
+      - name: Загрузка установщика Visual Studio Build Tools
         run: |
-          # Загружаем установщик Visual Studio Build Tools
-          Invoke-WebRequest -Uri https://aka.ms/vs/17/release/vs_installer.exe -OutFile vs_installer.exe
-          # Устанавливаем Build Tools с параметрами для тихой установки
-          Start-Process -FilePath vs_installer.exe -ArgumentList '--quiet', '--add-to-path', '--installProduct Microsoft.VisualStudio.2022.BuildTools' -Wait
+          $tempDir = [System.IO.Path]::GetTempPath()  # Указываем путь для временной папки
+          $installerPath = "$tempDir\vs_installer.exe"
+          Invoke-WebRequest -Uri https://aka.ms/vs/17/release/vs_installer.exe -OutFile $installerPath
+          # Проверяем, что файл был успешно загружен
+          if (Test-Path -Path $installerPath) {
+            Write-Host "Файл успешно загружен в: $installerPath"
+          } else {
+            Write-Host "Ошибка загрузки файла!"
+            exit 1
+          }
+
+      - name: Установка Visual Studio Build Tools
+        run: |
+          $installerPath = [System.IO.Path]::GetTempPath() + "vs_installer.exe"
+          Start-Process -FilePath $installerPath -ArgumentList '--quiet', '--add-to-path', '--installProduct Microsoft.VisualStudio.2022.BuildTools' -Wait
 
       - name: Проверка установки MSBuild
         run: |
