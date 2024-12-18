@@ -23,4 +23,4 @@ jobs:
         run: dotnet restore
 
       - name: Run lint check
-        run: dotnet build --no-restore --configuration Debug
+        run: dotnet build --no-restore --configuration Debug --arch x64
