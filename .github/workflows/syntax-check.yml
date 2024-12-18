@@ -25,9 +25,9 @@ jobs:
       - name: Display current directory
         run: pwd
 
-      # Линтинг кода с помощью StyleCop
+      # Линтинг с помощью StyleCop
       - name: Lint code with StyleCop
-        run: dotnet build -warnaserror
+        run: msbuild "VeterinaryClinic.sln" /p:Configuration=Release /t:Build /warnaserror
 
       # Сборка проекта
       - name: Build the project
