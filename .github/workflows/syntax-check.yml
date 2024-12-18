@@ -14,13 +14,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Visual Studio and .NET Framework
-        run: |
-          choco install visualstudio2019buildtools -y --package-parameters "--add Microsoft.VisualStudio.Workload.ManagedDesktopBuildTools"
-          choco install netfx-4.7.2-devpack -y
+      - name: Setup .NET Framework Developer Pack
+        run: choco install netfx-4.7.2-devpack -y
 
       - name: Restore NuGet packages
-        run: nuget restore VeterinaryClinic.sln
+        run: |
+          curl -L https://dist.nuget.org/win-x64-commandline/latest/nuget.exe -o nuget.exe
+          ./nuget.exe restore VeterinaryClinic.sln
 
-      - name: Build with MSBuild
-        run: msbuild VeterinaryClinic.sln /p:Configuration=Debug
+      - name: Build with MSBuild (custom path)
+        run: |
+          "E:\Visual Studio 2022\MSBuild\Current\Bin\MSBuild.exe" VeterinaryClinic.sln /p:Configuration=Debug
