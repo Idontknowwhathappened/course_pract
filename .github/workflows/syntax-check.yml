@@ -13,17 +13,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Проверить путь к MSBuild
+      - name: Проверка доступных дисков
         run: |
-          Write-Host "Проверка пути к MSBuild"
-          if (Test-Path "E:\Visual Studio 2022\MSBuild\Current\Bin\MSBuild.exe") {
-            Write-Host "MSBuild найден!"
-          } else {
-            Write-Host "MSBuild не найден по пути E:\Visual Studio 2022\MSBuild\Current\Bin\MSBuild.exe"
-          }
+          Get-PSDrive
 
       - name: Добавить MSBuild в PATH
         run: |
-          echo "Добавляю MSBuild в PATH..."
-          $env:PATH += ";E:\Visual Studio 2022\MSBuild\Current\Bin"
+          echo "E:\Visual Studio 2022\MSBuild\Current\Bin" | setx PATH "$env:PATH;E:\Visual Studio 2022\MSBuild\Current\Bin"
+
+      - name: Build with MSBuild
+        run: |
           & "E:\Visual Studio 2022\MSBuild\Current\Bin\MSBuild.exe" "VeterinaryClinic.sln" /p:Configuration=Debug
