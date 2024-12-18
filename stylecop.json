@@ -1,0 +1,41 @@
+{
+  "settings": {
+    "orderingRules": {
+      "usingDirectivesPlacement": "outsideNamespace",
+      "blankLinesBetweenUsingGroups": true,
+      "emptyLinesAfterImports": true,
+      "grouping": {
+        "System": 1,
+        "System.*": 2,
+        "Microsoft": 3,
+        "Microsoft.*": 4,
+        "Other": 5
+      }
+    },
+    "namingRules": {
+      "allowIdentifiersToMatchRegisteredTrademarks": false,
+      "allowUnderscoreInCode": false,
+      "fileNaming": {
+        "requireLowercase": true
+      },
+      "interfaceName": {
+        "prefix": "I",
+        "suffix": ""
+      }
+    },
+    "layoutRules": {
+      "newlineAtEndOfFile": true,
+      "indentationSize": 4,
+      "tabWidth": 4,
+      "useTabs": false
+    },
+    "maintainabilityRules": {
+      "maxMethodLines": 20,
+      "maxClassLines": 200,
+      "maxNamespaceLines": 200
+    },
+    "exceptionHandlingRules": {
+      "requireCatchClauseForTryBlock": true
+    }
+  }
+}
