@@ -17,15 +17,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # Установить необходимые инструменты для работы с .NET Framework (например, MSBuild)
-      - name: Set up MSBuild
-        run: |
-          choco install visualstudio2022buildtools --package-parameters "--allfeatures --includeRecommended --includeOptional"
-
       # Запуск сборки через MSBuild
       - name: Build the project
         run: msbuild "VeterinaryClinic.sln" /p:Configuration=Release
 
-      # Можно добавить этапы тестирования или проверки ошибок
+      # Проверка восстановления пакетов и сборка
       - name: Run MSBuild for syntax check
         run: msbuild "VeterinaryClinic.sln" /p:Configuration=Release /t:Restore
