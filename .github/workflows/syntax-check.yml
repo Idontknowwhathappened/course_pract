@@ -1,10 +1,7 @@
-name: Syntax Check
+name: Build Project
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
     branches:
       - main
 
@@ -19,10 +16,10 @@ jobs:
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '7.0'  # Используйте стабильную версию, которая поддерживает .NET Framework
+          dotnet-version: '8.0.x'  # Укажите нужную версию .NET SDK
 
       - name: Restore dependencies
         run: dotnet restore
 
       - name: Build the project
-        run: dotnet build --no-restore --configuration Debug --arch x64
+        run: dotnet build --no-restore --configuration Debug
