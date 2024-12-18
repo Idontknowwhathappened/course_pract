@@ -13,6 +13,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Add MSBuild to PATH
+        run: |
+          $env:PATH += ";E:\Visual Studio 2022\MSBuild\Current\Bin"
+            & "E:\Visual Studio 2022\MSBuild\Current\Bin\MSBuild.exe" "VeterinaryClinic.sln" /p:Configuration=Debug
+
+
       - name: Build with MSBuild
         run: |
           & "E:\Visual Studio 2022\MSBuild\Current\Bin\MSBuild.exe" "VeterinaryClinic.sln" /p:Configuration=Debug
