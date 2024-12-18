@@ -15,11 +15,12 @@ jobs:
 
       - name: Загрузка установщика Visual Studio Build Tools
         run: |
-          # Загружаем установщик Visual Studio Build Tools
-          Invoke-WebRequest -Uri https://aka.ms/vs/17/release/vs_installer.exe -OutFile vs_installer.exe
+          $tempDir = [System.IO.Path]::GetTempPath()  # Указываем путь для временной папки
+          $installerPath = "$tempDir\vs_installer.exe"
+          Invoke-WebRequest -Uri https://aka.ms/vs/17/release/vs_installer.exe -OutFile $installerPath
           # Проверяем, что файл был успешно загружен
-          if (Test-Path -Path "vs_installer.exe") {
-            Write-Host "Файл успешно загружен!"
+          if (Test-Path -Path $installerPath) {
+            Write-Host "Файл успешно загружен в: $installerPath"
           } else {
             Write-Host "Ошибка загрузки файла!"
             exit 1
@@ -27,8 +28,8 @@ jobs:
 
       - name: Установка Visual Studio Build Tools
         run: |
-          # Запускаем установку
-          Start-Process -FilePath vs_installer.exe -ArgumentList '--quiet', '--add-to-path', '--installProduct Microsoft.VisualStudio.2022.BuildTools' -Wait
+          $installerPath = [System.IO.Path]::GetTempPath() + "vs_installer.exe"
+          Start-Process -FilePath $installerPath -ArgumentList '--quiet', '--add-to-path', '--installProduct Microsoft.VisualStudio.2022.BuildTools' -Wait
 
       - name: Проверка установки MSBuild
         run: |
