@@ -14,9 +14,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Build project
-        run: dotnet build --no-restore --configuration Debug --arch x64
-
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
