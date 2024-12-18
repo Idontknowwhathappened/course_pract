@@ -17,10 +17,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # Запуск сборки через MSBuild
-      - name: Build the project
-        run: '& "D:\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\MSBuild.exe" VeterinaryClinic.sln /p:Configuration=Release'
+      # Настройка MSBuild
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1
 
-      # Проверка восстановления пакетов и сборка
-      - name: Run MSBuild for syntax check
-        run: msbuild "VeterinaryClinic.sln" /p:Configuration=Release /t:Restore
+      # Проверить директорию
+      - name: Display current directory
+        run: pwd
+
+      # Сборка проекта
+      - name: Build the project
+        run: msbuild "VeterinaryClinic.sln" /p:Configuration=Release
