@@ -1,42 +1,37 @@
-name: Build Project
+name: .NET Syntax Check
 
 on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      - name: Загрузка установщика Visual Studio Build Tools
-        run: |
-          $tempDir = [System.IO.Path]::GetTempPath()  # Указываем путь для временной папки
-          $installerPath = "$tempDir\vs_installer.exe"
-          Invoke-WebRequest -Uri https://aka.ms/vs/17/release/vs_installer.exe -OutFile $installerPath
-          # Проверяем, что файл был успешно загружен
-          if (Test-Path -Path $installerPath) {
-            Write-Host "Файл успешно загружен в: $installerPath"
-          } else {
-            Write-Host "Ошибка загрузки файла!"
-            exit 1
-          }
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '7.x'
 
-      - name: Установка Visual Studio Build Tools
-        run: |
-          $installerPath = [System.IO.Path]::GetTempPath() + "vs_installer.exe"
-          Start-Process -FilePath $installerPath -ArgumentList '--quiet', '--add-to-path', '--installProduct Microsoft.VisualStudio.2022.BuildTools' -Wait
+      - name: Restore dependencies
+        run: dotnet restore
 
-      - name: Проверка установки MSBuild
-        run: |
-          # Проверяем доступность MSBuild
-          & "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\MSBuild.exe" -version
+      - name: Build the project
+        run: dotnet build --no-restore --configuration Release
 
-      - name: Сборка с MSBuild
-        run: |
-          # Выполняем сборку проекта с использованием MSBuild
-          & "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\MSBuild.exe" "VeterinaryClinic.sln" /p:Configuration=Debug
+      - name: Run code analysis (Roslyn Analyzers)
+        run: dotnet build --no-restore --configuration Release /p:RunAnalyzers=true
+
+      - name: Run tests
+        run: dotnet test --no-build --configuration Release
+
+      - name: Publish results (Optional, if using Roslyn)
+        run: dotnet publish --configuration Release
