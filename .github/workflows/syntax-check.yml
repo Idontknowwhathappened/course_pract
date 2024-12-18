@@ -19,7 +19,7 @@ jobs:
 
       - name: Restore NuGet packages
         run: |
-          curl -L https://dist.nuget.org/win-x64-commandline/latest/nuget.exe -o nuget.exe
+          curl -L https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -o nuget.exe
           ./nuget.exe restore VeterinaryClinic.sln
 
       - name: Build with MSBuild (custom path)
