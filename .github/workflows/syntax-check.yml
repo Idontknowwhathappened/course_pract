@@ -25,4 +25,4 @@ jobs:
         run: dotnet restore
 
       - name: Build the project
-        run: dotnet build --no-restore --configuration Debug
+        run: dotnet build --no-restore --configuration Debug --arch x64
