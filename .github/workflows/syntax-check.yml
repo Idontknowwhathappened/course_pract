@@ -1,10 +1,12 @@
-name: Build .NET Framework Project
+name: Syntax Check
 
 on:
   push:
     branches:
       - main
   pull_request:
+    branches:
+      - main
 
 jobs:
   build:
@@ -14,14 +16,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup .NET Framework Developer Pack
-        run: choco install netfx-4.7.2-devpack -y
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '7.0'  # Используйте стабильную версию, которая поддерживает .NET Framework
 
-      - name: Restore NuGet packages
-        run: |
-          curl -L https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -o nuget.exe
-          ./nuget.exe restore VeterinaryClinic.sln
+      - name: Restore dependencies
+        run: dotnet restore
 
-      - name: Build with MSBuild (custom path)
-        run: |
-          & "E:\Visual Studio 2022\MSBuild\Current\Bin\MSBuild.exe" "VeterinaryClinic.sln" /p:Configuration=Debug
+      - name: Build the project
+        run: dotnet build --no-restore --configuration Debug
