@@ -13,14 +13,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Установить Visual Studio Build Tools
+      - name: Удалить предыдущие установки Visual Studio Build Tools
         run: |
-          choco install visualstudio2022buildtools --package-parameters "--add-to-path --quiet"
+          choco uninstall visualstudio2022buildtools -y || echo "Пакет не найден"
 
-      - name: Проверить установку MSBuild
+      - name: Загрузка и установка Visual Studio Build Tools
+        run: |
+          Invoke-WebRequest -Uri https://aka.ms/vs/17/release/vs_installer.exe -OutFile vs_installer.exe
+          Start-Process -FilePath vs_installer.exe -ArgumentList '--quiet', '--add-to-path', '--installProduct Microsoft.VisualStudio.2022.BuildTools' -Wait
+
+      - name: Проверка установки MSBuild
         run: |
           & "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\MSBuild.exe" -version
 
-      - name: Build with MSBuild
+      - name: Сборка с MSBuild
         run: |
           & "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\MSBuild.exe" "VeterinaryClinic.sln" /p:Configuration=Debug
