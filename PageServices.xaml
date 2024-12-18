@@ -1,0 +1,60 @@
+﻿<Page x:Class="VeterinaryClinic.PageServices"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:VeterinaryClinic"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageServices">
+    <Page.Resources>
+        <FontFamily x:Key="CustomFont">pack://application:,,,/Fonts/#Montserrat Alternates</FontFamily>
+    </Page.Resources>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Заголовок -->
+            <RowDefinition Height="*"/>
+            <!-- Основное содержимое -->
+            <RowDefinition Height="Auto"/>
+            <!-- Кнопки -->
+        </Grid.RowDefinitions>
+
+        <!-- DataGrid для отображения услуг -->
+        <DataGrid x:Name="ServicesDataGrid" Grid.Row="1" AutoGenerateColumns="False" 
+                  CanUserAddRows="False" SelectionMode="Single"
+                  Background="#FFFFFF" Foreground="#0A1129" BorderBrush="#FFAB648C"
+                  Margin="0,0,0,10" HeadersVisibility="Column" IsReadOnly="True"  SelectionChanged="ServicesDataGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn FontFamily="{StaticResource CustomFont}" Header="ID" Binding="{Binding service_id}" Width="50" IsReadOnly="True"/>
+                <DataGridTextColumn FontFamily="{StaticResource CustomFont}" Header="Название" Binding="{Binding name}" Width="340"/>
+                <DataGridTextColumn FontFamily="{StaticResource CustomFont}" Header="Описание" Binding="{Binding description}" Width="390"/>
+                <DataGridTextColumn FontFamily="{StaticResource CustomFont}" Header="Цена" Binding="{Binding price}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Поля для добавления/редактирования -->
+        <StackPanel Grid.Row="2" Orientation="Vertical" Margin="0,10">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <TextBox x:Name="ServiceNameTextBox" Background="#FFFFFF" FontFamily="{StaticResource CustomFont}" Width="250" Padding="5" 
+                         materialDesign:HintAssist.Hint="Название"  Foreground="#0A1129" BorderBrush="#FFAB648C" Margin="5" CaretBrush="#FFAB648C" SelectionBrush="#FFAB648C"/>
+                <TextBox x:Name="ServiceDescriptionTextBox" Background="#FFFFFF" FontFamily="{StaticResource CustomFont}" Foreground="#0A1129" 
+                         BorderBrush="#FFAB648C" Width="390" Padding="5" materialDesign:HintAssist.Hint="Описание" Margin="5" CaretBrush="#FFAB648C" SelectionBrush="#FFAB648C"/>
+                <TextBox x:Name="ServicePriceTextBox" Background="#FFFFFF" FontFamily="{StaticResource CustomFont}" Foreground="#0A1129" 
+                         BorderBrush="#FFAB648C" Width="100" Padding="5" materialDesign:HintAssist.Hint="Цена" Margin="5" CaretBrush="#FFAB648C" SelectionBrush="#FFAB648C"/>
+            </StackPanel>
+
+            <!-- Кнопки управления -->
+            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Right" Margin="0,10">
+                <Button Content="Добавить" FontFamily="{StaticResource CustomFont}" Width="120" Margin="5" Background="#FFC28DAB" 
+                        Foreground="White" Click="AddServiceButton_Click" BorderBrush="#FFAB648C"/>
+                <Button Content="Изменить" FontFamily="{StaticResource CustomFont}" Width="120" Margin="5" BorderBrush="#FFAB648C" Background="#FFAB648C" 
+                        Foreground="White" Click="EditServiceButton_Click"/>
+                <Button Content="Удалить" FontFamily="{StaticResource CustomFont}" Width="120" Margin="5" BorderBrush="#FF614949" Background="#FF8D6D6D" 
+                        Foreground="White" Click="DeleteServiceButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+
+</Page>

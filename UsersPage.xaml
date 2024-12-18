@@ -1,0 +1,109 @@
+﻿<Page x:Class="VeterinaryClinic.UsersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="900"
+      Title="UsersPage">
+    <Page.Resources>
+        <FontFamily x:Key="CustomFont">pack://application:,,,/Fonts/#Montserrat Alternates</FontFamily>
+    </Page.Resources>
+    <Grid Margin="10" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Для фильтров -->
+            <RowDefinition Height="*"/>
+            <!-- Для таблицы -->
+            <RowDefinition Height="Auto"/>
+            <!-- Для управления -->
+        </Grid.RowDefinitions>
+
+        <!-- Фильтры -->
+        <StackPanel  Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10" >
+            <TextBox Padding="5" FontFamily="{StaticResource CustomFont}" x:Name="UsernameTextBox" Width="150" Margin="0,0,10,0" 
+                     VerticalAlignment="Center" materialDesign:HintAssist.Hint="Логин" CaretBrush="#FFAB648C" SelectionBrush="#FFAB648C"
+                     Background="#FFFFFF" Foreground="#0A1129" BorderBrush="#FFAB648C"/>
+            <TextBox Padding="5" FontFamily="{StaticResource CustomFont}" x:Name="FirstNameTextBox" Width="150" Margin="0,0,10,0" 
+                     VerticalAlignment="Center" materialDesign:HintAssist.Hint="Имя" CaretBrush="#FFAB648C" SelectionBrush="#FFAB648C"
+                     Background="#FFFFFF" Foreground="#0A1129" BorderBrush="#FFAB648C"/>
+            <TextBox Padding="5" FontFamily="{StaticResource CustomFont}" x:Name="LastNameTextBox" Width="150" Margin="0,0,10,0" 
+                     VerticalAlignment="Center" materialDesign:HintAssist.Hint="Фамилия" CaretBrush="#FFAB648C" SelectionBrush="#FFAB648C"
+                     Background="#FFFFFF" Foreground="#0A1129" BorderBrush="#FFAB648C"/>
+            <TextBox Padding="5" FontFamily="{StaticResource CustomFont}" x:Name="PatronymicTextBox" Width="150" Margin="0,0,10,0" 
+                     VerticalAlignment="Center" materialDesign:HintAssist.Hint="Отчество" CaretBrush="#FFAB648C" SelectionBrush="#FFAB648C"
+                     Background="#FFFFFF" Foreground="#0A1129" BorderBrush="#FFAB648C"/>
+            <ComboBox Padding="5" FontFamily="{StaticResource CustomFont}" x:Name="RoleFilterComboBox" Width="150" Margin="0,0,10,0" 
+                      VerticalAlignment="Center" materialDesign:HintAssist.Hint="Роль" 
+                      Background="#FFFFFF" Foreground="#0A1129" BorderBrush="#FFAB648C"/>
+            <Button  FontFamily="{StaticResource CustomFont}" Content="Найти" Background="#FFC28DAB" BorderBrush="#FFAB648C" 
+                    Foreground="White" Width="120" VerticalAlignment="Center" 
+                    Click="SearchButton_Click" />
+        </StackPanel>
+
+        <!-- Таблица -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <DataGrid x:Name="UsersDataGrid" AutoGenerateColumns="False" 
+                      CanUserAddRows="False" IsReadOnly="True" Background="#FFFFFF"
+                      Foreground="#0A1129" BorderBrush="#FFAB648C"
+                      SelectionChanged="UsersDataGrid_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" FontFamily="{StaticResource CustomFont}" Binding="{Binding UserID}" Width="50"/>
+                    <DataGridTextColumn Header="Логин" FontFamily="{StaticResource CustomFont}" Binding="{Binding Username}" Width="170"/>
+                    <DataGridTextColumn Header="Email" FontFamily="{StaticResource CustomFont}" Binding="{Binding Email}" Width="220"/>
+                    <DataGridTextColumn Header="Роль" FontFamily="{StaticResource CustomFont}" Binding="{Binding Role}" Width="170"/>
+                    <DataGridTextColumn Header="ФИО Врача" FontFamily="{StaticResource CustomFont}" Binding="{Binding DoctorFullName}" Width="270"/>
+                    <DataGridTextColumn Header="Специализация" FontFamily="{StaticResource CustomFont}" Binding="{Binding Specialization}" Width="200"/>
+                    <DataGridTextColumn Header="Опыт" FontFamily="{StaticResource CustomFont}" Binding="{Binding WorkExperience}" Width="70"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+
+        <!-- Управление пользователями -->
+        <StackPanel Grid.Row="2" Orientation="Vertical" Margin="0,0,0,10">
+            <TextBlock FontFamily="{StaticResource CustomFont}" Text="Добавить/Изменить врача" FontSize="16" FontWeight="Bold" 
+               Foreground="White" Margin="0,5,0,10"/>
+            <StackPanel Orientation="Vertical" Margin="0,5">
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Padding="5" Width="210" FontFamily="{StaticResource CustomFont}" x:Name="DoctorFirstNameTextBox" 
+                     materialDesign:HintAssist.Hint="Имя врача" Margin="0,5" Background="#FFFFFF" Foreground="#0A1129" 
+                     CaretBrush="#FFAB648C" SelectionBrush="#FFAB648C" BorderBrush="#FFAB648C"/>
+                    <TextBox Padding="5" Width="220" FontFamily="{StaticResource CustomFont}" x:Name="DoctorLastNameTextBox" 
+                     materialDesign:HintAssist.Hint="Фамилия врача" Margin="15,5" Background="#FFFFFF" Foreground="#0A1129" 
+                     CaretBrush="#FFAB648C" SelectionBrush="#FFAB648C" BorderBrush="#FFAB648C"/>
+                    <TextBox Padding="5" Width="220" FontFamily="{StaticResource CustomFont}" x:Name="DoctorPatronymicTextBox" 
+                     materialDesign:HintAssist.Hint="Отчество врача" Margin="5,5" Background="#FFFFFF" Foreground="#0A1129" 
+                     CaretBrush="#FFAB648C" SelectionBrush="#FFAB648C" BorderBrush="#FFAB648C"/>
+                    <TextBox Padding="5" Width="170" FontFamily="{StaticResource CustomFont}" x:Name="DoctorExperienceTextBox" 
+                     materialDesign:HintAssist.Hint="Опыт работы (лет)" Margin="5,5" Background="#FFFFFF" Foreground="#0A1129" 
+                     CaretBrush="#FFAB648C" SelectionBrush="#FFAB648C"/>
+                    <ComboBox Padding="5" Width="170" FontFamily="{StaticResource CustomFont}" x:Name="DoctorSpecializationComboBox" 
+                      materialDesign:HintAssist.Hint="Специализация" Margin="5,5" Background="#FFFFFF" Foreground="#0A1129" />
+                </StackPanel>
+                <TextBox Padding="5" FontFamily="{StaticResource CustomFont}" x:Name="LoginTextBox" 
+                 materialDesign:HintAssist.Hint="Логин" Margin="0,5" Background="#FFFFFF" Foreground="#0A1129" 
+                 CaretBrush="#FFAB648C" SelectionBrush="#FFAB648C" BorderBrush="#FFAB648C"/>
+                <TextBox Padding="5" FontFamily="{StaticResource CustomFont}" x:Name="PasswordTextBox" 
+                 materialDesign:HintAssist.Hint="Пароль" Margin="0,5" Background="#FFFFFF" Foreground="#0A1129" 
+                 CaretBrush="#FFAB648C" SelectionBrush="#FFAB648C" BorderBrush="#FFAB648C"/>
+                <TextBox Padding="5" FontFamily="{StaticResource CustomFont}" x:Name="EmailTextBox" 
+                 materialDesign:HintAssist.Hint="Email" Margin="0,5" Background="#FFFFFF" Foreground="#0A1129" 
+                 CaretBrush="#FFAB648C" SelectionBrush="#FFAB648C" BorderBrush="#FFAB648C"/>
+                <TextBox Padding="5" FontFamily="{StaticResource CustomFont}" x:Name="NumberTextBox" 
+                 materialDesign:HintAssist.Hint="Номер телефона" Margin="0,5" Background="#FFFFFF" Foreground="#0A1129" 
+                 CaretBrush="#FFAB648C" SelectionBrush="#FFAB648C" BorderBrush="#FFAB648C"/>
+                <ComboBox Padding="5" FontFamily="{StaticResource CustomFont}" x:Name="RoleComboBox" 
+                  materialDesign:HintAssist.Hint="Роль" Margin="0,5" Background="#FFFFFF" Foreground="#0A1129" BorderBrush="#FFAB648C" />
+            </StackPanel>
+
+            <!-- Кнопки справа -->
+            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Margin="0,0,10,0" FontFamily="{StaticResource CustomFont}" Content="Добавить" Background="#FFC28DAB" 
+                    BorderBrush="#FFAB648C" Foreground="White" Width="180" Click="AddDoctorButton_Click"/>
+                <Button FontFamily="{StaticResource CustomFont}" Content="Изменить" Background="#FFAB648C" 
+                    BorderBrush="#FFAB648C" Foreground="White" Width="180" Click="EditDoctorButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

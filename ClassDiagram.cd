@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="VeterinaryClinic.AccountsPage" BaseTypeListCollapsed="true">
+    <Position X="20.25" Y="4" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AccountsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VeterinaryClinic.AddPetWindow" BaseTypeListCollapsed="true">
+    <Position X="23.25" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABABAAJCAAAQAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>AddPetWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VeterinaryClinic.AdminAppointmentsPage" BaseTypeListCollapsed="true">
+    <Position X="19.5" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>AdminAppointmentsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VeterinaryClinic.AdministratorWindow" BaseTypeListCollapsed="true">
+    <Position X="22.25" Y="7" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AdministratorWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VeterinaryClinic.Appointment">
+    <Position X="25.5" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAACAAIwAAAAAAAAAQAACAgIQAAAAAAAAAEAAAI=</HashCode>
+      <FileName>PageAppointment.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VeterinaryClinic.AppointmentManager">
+    <Position X="28.25" Y="4" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAIAAAAAAAAAQAAAAEAAAACEAAAAAAAAAAAA=</HashCode>
+      <FileName>PageAppointment.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VeterinaryClinic.AuditPage" BaseTypeListCollapsed="true">
+    <Position X="25.5" Y="7.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AuditPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VeterinaryClinic.ChooseSpecialist" BaseTypeListCollapsed="true">
+    <Position X="28.5" Y="7" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>IAAIAAIASAgAAQEAoAUgBgQAQAAAAAAAAAAAAAZAjAA=</HashCode>
+      <FileName>ChooseSpecialist.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VeterinaryClinic.Doctor">
+    <Position X="34.25" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ChooseSpecialist.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VeterinaryClinic.DoctorsShedulePage" BaseTypeListCollapsed="true">
+    <Position X="22.25" Y="8.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAYAAACAAAAAAAAAAACAAAAAAAAACAAg=</HashCode>
+      <FileName>DoctorsShedulePage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VeterinaryClinic.HistoryAppointment" BaseTypeListCollapsed="true">
+    <Position X="25.25" Y="9.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAACAQAAAAAAIAAQAAAAwAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HistoryAppointment.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VeterinaryClinic.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="29" Y="13.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAIAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VeterinaryClinic.MainWindowVetDoctor" BaseTypeListCollapsed="true">
+    <Position X="31.25" Y="4" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AEiAAABQAAAAAACAIKAQAEgAgIAAACgEAQEIgAAAgQA=</HashCode>
+      <FileName>MainWindowVetDoctor.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VeterinaryClinic.ManagerWindow" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="8" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>IABAgQAgCQAACBCAIEABAAQAgCgAAAAAAAAAAACAEhA=</HashCode>
+      <FileName>ManagerWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VeterinaryClinic.PageAppointment" BaseTypeListCollapsed="true">
+    <Position X="22.25" Y="11.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AEAEAAAAAAAAAAAAIAARAAAAgCAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>PageAppointment.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VeterinaryClinic.PageClientInformation" BaseTypeListCollapsed="true">
+    <Position X="25.75" Y="13.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAQBARFACQAEoAAQAAAIgIAAAAAAAAQAACAAAAA=</HashCode>
+      <FileName>PageClientInformation.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VeterinaryClinic.PageEditOwner" BaseTypeListCollapsed="true">
+    <Position X="29" Y="15.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>BACAAAAAAAAACAAAAgAAAAIAgAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>PageEditOwner.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VeterinaryClinic.PageMakeAppointment" BaseTypeListCollapsed="true">
+    <Position X="31.25" Y="11.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAACALAAAAAAAAAQAgAAAAIgQAQ=</HashCode>
+      <FileName>PageMakeAppointment.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VeterinaryClinic.PageServices" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="14.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAQABAAAAEAAACAAAAgAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>PageServices.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VeterinaryClinic.PaymentMethod">
+    <Position X="35.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>PaymentsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VeterinaryClinic.PaymentsPage" BaseTypeListCollapsed="true">
+    <Position X="34.5" Y="8.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AECAAACAgQAAAAAEIAAQQAAAwAAAABAAAAAAAAAAAgA=</HashCode>
+      <FileName>PaymentsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VeterinaryClinic.Pet">
+    <Position X="34" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ManagerWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VeterinaryClinic.RegisterWindow" BaseTypeListCollapsed="true">
+    <Position X="34.75" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>RegisterWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VeterinaryClinic.SearchClientPage" BaseTypeListCollapsed="true">
+    <Position X="34.75" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAICAgAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SearchClientPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VeterinaryClinic.StatisticsPage" BaseTypeListCollapsed="true">
+    <Position X="22.5" Y="15.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAQQAAAEAAAABQAAAgAAAQAAACAAgAAAAAAAAA=</HashCode>
+      <FileName>StatisticsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="VeterinaryClinic.UsersPage" BaseTypeListCollapsed="true">
+    <Position X="31.5" Y="15.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AgAQAAAAgAAAAYgIAAAAAAAAAAAAAAAAAAAgQAAAQBA=</HashCode>
+      <FileName>UsersPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,29 @@
+﻿<Window x:Class="VeterinaryClinic.AddPetWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Добавить питомца" Height="400" Width="400" Background="#FFFFE2E5">
+    <Window.Resources>
+        <FontFamily x:Key="CustomFont">pack://application:,,,/Fonts/#Montserrat Alternates</FontFamily>
+    </Window.Resources>
+    <StackPanel Margin="10">
+        <TextBox FontFamily="{StaticResource CustomFont}" x:Name="PetNameTextBox" Margin="0,5"
+                 materialDesign:TextFieldAssist.UnderlineBrush="#FFAB648C"
+                 materialDesign:TextFieldAssist.HasClearButton="True"
+                 Height="40"
+                 materialDesign:HintAssist.Hint="Имя пользователя"
+                 Foreground="#FF2D2226" materialDesign:HintAssist.IsFloating="False" 
+                 BorderBrush="#FFAB648C" CaretBrush="#FFAB648C" SelectionBrush="#FFAB648C" 
+                 Background="{x:Null}"/>
+
+        <DatePicker Name="BirthDatePicker" Height="40" materialDesign:HintAssist.Hint="Дата рождения:" BorderBrush="#FFAB648C" FontFamily="{StaticResource CustomFont}" Margin="0,5" />
+
+        <ComboBox Padding="5" Height="40" FontFamily="{StaticResource CustomFont}" x:Name="KindComboBox" 
+                  materialDesign:HintAssist.Hint="Вид" Margin="0,5" Background="{x:Null}" Foreground="#0A1129" BorderBrush="#FFAB648C" />
+
+        <ComboBox Padding="5" Height="40" FontFamily="{StaticResource CustomFont}" x:Name="SexComboBox" 
+                  materialDesign:HintAssist.Hint="Пол" Margin="0,5" Background="{x:Null}" Foreground="#0A1129" BorderBrush="#FFAB648C" />
+
+        <Button Content="Добавить питомца" FontFamily="{StaticResource CustomFont}" Click="AddPetButton_Click" Background="#FFC28DAB" BorderBrush="#FFAB648C" Margin="0,10" HorizontalAlignment="Center" />
+    </StackPanel>
+</Window>

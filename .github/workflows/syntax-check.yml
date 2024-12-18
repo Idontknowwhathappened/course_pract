@@ -1,0 +1,26 @@
+name: Syntax and Lint Check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.300-preview.24203.14
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Run lint check
+        run: dotnet build --no-restore --configuration Debug

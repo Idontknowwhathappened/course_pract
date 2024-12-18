@@ -1,0 +1,115 @@
+﻿<Window x:Class="VeterinaryClinic.ManagerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:VeterinaryClinic"
+        mc:Ignorable="d"
+        Title="ManagerWindow" Height="800" Width="1500" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <!-- Определяем стиль шрифта -->
+        <FontFamily x:Key="CustomFont">pack://application:,,,/Fonts/#Montserrat Alternates</FontFamily>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="320"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <materialDesign:Card Grid.Column="0" Background="#FFFFE2E5">
+            <TabControl x:Name="MainTabControl" Background="#FFFFE2E5" SelectionChanged="TabControl_SelectionChanged" FontFamily="{StaticResource CustomFont}" materialDesign:NavigationRailAssist.ShowSelectionBackground="True" SnapsToDevicePixels="True"
+                        Style="{StaticResource MaterialDesignNavigationRailTabControl}" TabStripPlacement="Left" IsEnabled="False" Margin="0,0,0,230">
+                <TabItem Width="320" Header="Приёмы">
+                    <TabItem.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <materialDesign:PackIcon Width="30" Height="30" Kind="Doctor" Foreground="#FFAC7695" HorizontalAlignment="Center"/>
+                                <TextBlock HorizontalAlignment="Center" Text="Приёмы" FontSize="17" Foreground="#FFAC7695" TextAlignment="Center"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </TabItem.HeaderTemplate>
+                </TabItem>
+                <TabItem Width="320" Header="Счета">
+                    <TabItem.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <materialDesign:PackIcon Width="30" Height="30" Kind="Payment" Foreground="#FFAC7695" HorizontalAlignment="Center"/>
+                                <TextBlock HorizontalAlignment="Center" Text="Счета" FontSize="17" TextAlignment="Center" Foreground="#FFAC7695"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </TabItem.HeaderTemplate>
+                </TabItem>
+                <TabItem Width="320" Header="Личная информация">
+                    <TabItem.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel >
+                                <materialDesign:PackIcon Width="30" Height="30" Kind="User" Foreground="#FFAC7695" HorizontalAlignment="Center"/>
+                                <TextBlock HorizontalAlignment="Center" Text="Личная информация" FontSize="17" TextWrapping="Wrap" TextAlignment="Center" Foreground="#FFAC7695"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </TabItem.HeaderTemplate>
+                </TabItem>
+                <TabItem Width="320" Header="Другой клиент">
+                    <TabItem.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel >
+                                <materialDesign:PackIcon Width="30" Height="30" Kind="UserEdit" Foreground="#FFAC7695" HorizontalAlignment="Center"/>
+                                <TextBlock HorizontalAlignment="Center" Text="Другой клиент" FontSize="17" TextWrapping="Wrap" TextAlignment="Center" Foreground="#FFAC7695"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </TabItem.HeaderTemplate>
+                </TabItem>
+                <TabItem Width="320" Header="Выход из аккаунта">
+                    <TabItem.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel >
+                                <materialDesign:PackIcon Width="30" Height="30" Kind="Logout" Foreground="#FFAC7695" HorizontalAlignment="Center"/>
+                                <TextBlock HorizontalAlignment="Center" Text="Выход из аккаунта" FontSize="17" TextWrapping="Wrap" TextAlignment="Center" Foreground="#FFAC7695"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </TabItem.HeaderTemplate>
+                </TabItem>
+            </TabControl>
+
+        </materialDesign:Card>
+        <Frame x:Name="MainFrame" Background="#FFFFE2E5" Grid.Column="1" NavigationUIVisibility="Hidden"/>
+
+        <StackPanel Orientation="Horizontal">
+
+        </StackPanel>
+
+        <Expander x:Name="Da" DataContext="{Binding RelativeSource={RelativeSource AncestorType=Window}}" 
+          Header="{Binding SelectedPetName}" Background="#FFFFE2E5" FontFamily="{StaticResource CustomFont}"
+          ExpandDirection="Up" Height="Auto" VerticalAlignment="Bottom" Margin="10,10,10,10">
+
+            <Expander.HeaderTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                        <materialDesign:PackIcon Kind="Cat" VerticalAlignment="Center" 
+                                         Foreground="#FFAC7695" Width="25" Height="25" Margin="0,0,5,0"/>
+                        <TextBlock Text="{Binding DataContext.SelectedPetName, RelativeSource={RelativeSource AncestorType=Window}}" 
+                           FontSize="14" VerticalAlignment="Center" FontWeight="Bold" Foreground="#FFAC7695"/>
+
+                    </StackPanel>
+                </DataTemplate>
+            </Expander.HeaderTemplate>
+
+            <StackPanel Margin="10,10,10,0" VerticalAlignment="Top">
+                <!-- Показать список питомцев -->
+                <ItemsControl ItemsSource="{Binding PetsList}" Height="Auto">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <!-- Выводим имена питомцев текстом вместо кнопок -->
+                            <TextBlock Text="{Binding Name}" 
+                               Margin="45,0,5,5"
+                               FontSize="14" 
+                               VerticalAlignment="Top" 
+                               FontWeight="Bold" 
+                               Foreground="#FFAC7695" Cursor="Hand" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Expander>
+    </Grid>
+</Window>

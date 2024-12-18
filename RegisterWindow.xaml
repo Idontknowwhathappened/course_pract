@@ -1,0 +1,86 @@
+﻿<Window x:Class="VeterinaryClinic.RegisterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:VeterinaryClinic"
+        mc:Ignorable="d"
+        Title="RegisterWindow" Height="620" Width="500" Background="#FFFFE2E5">
+    <Window.Resources>
+        <FontFamily x:Key="CustomFont">pack://application:,,,/Fonts/#Montserrat Alternates</FontFamily>
+    </Window.Resources>
+    <Grid Margin="20">
+        <StackPanel>
+            <TextBlock FontFamily="{StaticResource CustomFont}" Text="Регистрация клиента" FontSize="24" FontWeight="Bold" Margin="0,0,0,20" HorizontalAlignment="Center" Foreground="#FFC28DAB"/>
+
+            <TextBox FontFamily="{StaticResource CustomFont}" x:Name="UsernameTextBox" Width="300" Margin="0,0,0,10"
+                     materialDesign:TextFieldAssist.UnderlineBrush="#FFD4A5A9"
+                     materialDesign:TextFieldAssist.HasClearButton="True"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}" 
+                     materialDesign:HintAssist.Hint="Имя пользователя"
+                     Foreground="#FF2D2226" materialDesign:HintAssist.IsFloating="False" 
+                     BorderBrush="#FFD4A5A9" CaretBrush="#FFAB648C" SelectionBrush="#FFAB648C" 
+                     Background="{x:Null}"/>
+
+            <TextBox FontFamily="{StaticResource CustomFont}" x:Name="EmailTextBox" Width="300" Margin="0,0,0,10"
+                     materialDesign:TextFieldAssist.UnderlineBrush="#FFD4A5A9"
+                     materialDesign:TextFieldAssist.HasClearButton="True"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}" 
+                     materialDesign:HintAssist.Hint="E-mail"
+                     Foreground="#FF2D2226" materialDesign:HintAssist.IsFloating="False" 
+                     BorderBrush="#FFD4A5A9" CaretBrush="#FFAB648C" SelectionBrush="#FFAB648C" 
+                     Background="{x:Null}"/>
+
+            <PasswordBox FontFamily="{StaticResource CustomFont}" x:Name="PasswordBox" Width="300" Margin="0,0,0,10"
+                         Style="{StaticResource MaterialDesignOutlinedRevealPasswordBox}" 
+                         materialDesign:HintAssist.Hint="Пароль" 
+                         materialDesign:HintAssist.IsFloating="False"
+                         materialDesign:TextFieldAssist.HasClearButton="True"
+                         materialDesign:HintAssist.Background="Transparent"
+                         Foreground="#FF7B6D72" Background="{x:Null}"
+                         BorderBrush="#FFD4A5A9" CaretBrush="#FFAB648C" SelectionBrush="#FFAB648C"/>
+
+            <TextBox FontFamily="{StaticResource CustomFont}" x:Name="OwnerNameTextBox" Width="300" Margin="0,0,0,10"
+                     materialDesign:TextFieldAssist.UnderlineBrush="#FFD4A5A9"
+                     materialDesign:TextFieldAssist.HasClearButton="True"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}" 
+                     materialDesign:HintAssist.Hint="Имя владельца"
+                     Foreground="#FF2D2226" materialDesign:HintAssist.IsFloating="False" 
+                     BorderBrush="#FFD4A5A9" CaretBrush="#FFAB648C" SelectionBrush="#FFAB648C" 
+                     Background="{x:Null}"/>
+
+            <TextBox FontFamily="{StaticResource CustomFont}" x:Name="OwnerLastNameTextBox" Width="300" Margin="0,0,0,10"
+                     materialDesign:TextFieldAssist.UnderlineBrush="#FFD4A5A9"
+                     materialDesign:TextFieldAssist.HasClearButton="True"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}" 
+                     materialDesign:HintAssist.Hint="Фамилия владельца"
+                     Foreground="#FF2D2226" materialDesign:HintAssist.IsFloating="False" 
+                     BorderBrush="#FFD4A5A9" CaretBrush="#FFAB648C" SelectionBrush="#FFAB648C" 
+                     Background="{x:Null}"/>
+
+            <TextBox FontFamily="{StaticResource CustomFont}" x:Name="OwnerPatronymicTextBox" Width="300" Margin="0,0,0,10"
+                     materialDesign:TextFieldAssist.UnderlineBrush="#FFD4A5A9"
+                     materialDesign:TextFieldAssist.HasClearButton="True"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}" 
+                     materialDesign:HintAssist.Hint="Отчество владельца"
+                     Foreground="#FF2D2226" materialDesign:HintAssist.IsFloating="False" 
+                     BorderBrush="#FFD4A5A9" CaretBrush="#FFAB648C" SelectionBrush="#FFAB648C" 
+                     Background="{x:Null}"/>
+
+            <TextBox FontFamily="{StaticResource CustomFont}" x:Name="ContactDetailsTextBox" Width="300" Margin="0,0,0,10"
+                     materialDesign:TextFieldAssist.UnderlineBrush="#FFD4A5A9"
+                     materialDesign:TextFieldAssist.HasClearButton="True"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}" 
+                     materialDesign:HintAssist.Hint="Контактные данные"
+                     Foreground="#FF2D2226" materialDesign:HintAssist.IsFloating="False" 
+                     BorderBrush="#FFD4A5A9" CaretBrush="#FFAB648C" SelectionBrush="#FFAB648C" 
+                     Background="{x:Null}"/>
+
+            <Button FontFamily="{StaticResource CustomFont}" Margin="0,15,0,0" Content="Зарегистрировать" Width="200" 
+                    Click="RegisterButton_Click" Background="#FFC28DAB" BorderBrush="#FFAB648C"/>
+            <Button FontFamily="{StaticResource CustomFont}" Content="Назад" Width="200" 
+                    Click="BackButton_Click" Margin="0,10,0,0" BorderBrush="#FFA70606" Background="#FFDF2727"/>
+        </StackPanel>
+    </Grid>
+</Window>

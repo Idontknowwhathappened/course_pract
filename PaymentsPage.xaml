@@ -1,0 +1,79 @@
+﻿<Page x:Class="VeterinaryClinic.PaymentsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VeterinaryClinic"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="900"
+      Title="PaymentsPage">
+
+    <Page.Resources>
+        <FontFamily x:Key="CustomFont">pack://application:,,,/Fonts/#Montserrat Alternates</FontFamily>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <!-- Левая часть с приемами -->
+            <ColumnDefinition Width="500"/>
+            <!-- Правая часть с деталями -->
+            <ColumnDefinition Width="400"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Список приемов -->
+        <ListView Grid.Column="0" ItemsSource="{Binding Appointments}" FontFamily="{StaticResource CustomFont}" Margin="10" Name="AppointmentsList" SelectionChanged="AppointmentsList_SelectionChanged" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="300" DisplayMemberBinding="{Binding AppoinmentName}" >
+                        <GridViewColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Наименование приёма" FontSize="17"/>
+                            </DataTemplate>
+                        </GridViewColumn.HeaderTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="140" DisplayMemberBinding="{Binding AppointmentDateTime}">
+                        <GridViewColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Дата" FontSize="17"/>
+                            </DataTemplate>
+                        </GridViewColumn.HeaderTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel Grid.Column="1" Margin="10,10,10,10" >
+            <TextBlock FontFamily="{StaticResource CustomFont}" Name="NameAppoinment" FontWeight="SemiBold" FontSize="16" Margin="0,0,0,10"/>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Врач:" FontSize="17" FontWeight="Medium" FontFamily="{StaticResource CustomFont}"/>
+                <TextBlock Name="Veterinarian" FontSize="17" FontFamily="{StaticResource CustomFont}" Margin="5,0,0,10"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Дата:" FontSize="17" FontWeight="Medium" FontFamily="{StaticResource CustomFont}"/>
+                <TextBlock Name="AppointmentDateTextBlock" FontSize="17" FontFamily="{StaticResource CustomFont}" Margin="5,0,0,10"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Время:" FontSize="17" FontWeight="Medium" FontFamily="{StaticResource CustomFont}"/>
+                <TextBlock Name="AppointmentTimeTextBlock" FontSize="17" FontFamily="{StaticResource CustomFont}" Margin="5,0,0,10"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Жалобы:" FontSize="17" FontWeight="Medium" Margin="0,0,0,5" FontFamily="{StaticResource CustomFont}"/>
+                <TextBlock Name="ComplaintsTextBlock" FontSize="17" FontFamily="{StaticResource CustomFont}" TextWrapping="Wrap" Margin="5,0,0,10"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Итоговая сумма:" FontSize="17" FontWeight="Medium" Margin="0,0,0,5" FontFamily="{StaticResource CustomFont}"/>
+                <TextBlock Name="TotalAmount" FontSize="17" FontFamily="{StaticResource CustomFont}" TextWrapping="Wrap" Margin="5,0,0,10"/>
+            </StackPanel>
+
+            <ComboBox Name="PaymentMethodComboBox" materialDesign:HintAssist.Hint="Способ оплаты" FontWeight="Medium" FontFamily="{StaticResource CustomFont}" DisplayMemberPath="Name" SelectedValuePath="MethodID" 
+                      SelectedValue="{Binding SelectedPaymentMethod, Mode=TwoWay}" FontSize="17" IsEnabled="False" Margin="0,5" 
+                      ItemsSource="{Binding PaymentMethods}" />
+            <Button x:Name="GenerateInvoice" Content="Сгенерировать счёт" FontFamily="{StaticResource CustomFont}" Background="#FFC28DAB" BorderBrush="#FFAB648C" FontSize="15" Margin="5,10,5,0" Click="GenerateInvoice_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

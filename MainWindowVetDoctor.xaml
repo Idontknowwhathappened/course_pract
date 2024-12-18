@@ -1,0 +1,143 @@
+﻿<Window x:Class="VeterinaryClinic.MainWindowVetDoctor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VeterinaryClinic"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="MainWindowVetDoctor" Height="650" Width="1500" MinHeight="650" MinWidth="1500" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <!-- Определяем стиль шрифта -->
+        <FontFamily x:Key="CustomFont">pack://application:,,,/Fonts/#Montserrat Alternates</FontFamily>
+    </Window.Resources>
+    <Grid Background="#FFFFE2E5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="7*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Левая панель с записями -->
+        <StackPanel Grid.Column="0" Background="#FFE9BFC3" Margin="10">
+            <DatePicker Name="DoctorDatePicker" SelectedDate="{x:Static sys:DateTime.Today}" Style="{StaticResource MaterialDesignOutlinedDatePicker}" Foreground="#FF6C3253" SelectedDateChanged="DoctorDatePicker_SelectedDateChanged" FontSize="14" materialDesign:TextFieldAssist.UnderlineBrush="#FFC28DAB" BorderBrush="#FFC28DAB" Margin="10" />
+            <ListView Name="PatientList" FontFamily="{StaticResource CustomFont}" Margin="10" VerticalAlignment="Stretch" SelectionChanged="PatientList_SelectionChanged">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical" Margin="5" Background="{x:Null}" VerticalAlignment="Stretch">
+                            <StackPanel.Style>
+                                <Style TargetType="StackPanel">
+                                    <Setter Property="IsEnabled" Value="True" />
+                                    <Setter Property="Opacity" Value="1" />
+                                    <Style.Triggers>
+                                        <!-- Если статус "Завершено", панель становится неактивной -->
+                                        <DataTrigger Binding="{Binding app_status}" Value="Завершено">
+                                            <Setter Property="IsEnabled" Value="False" />
+                                            <Setter Property="Opacity" Value="0.5" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </StackPanel.Style>
+
+                            <TextBlock Text="{Binding owner_name}" FontWeight="Bold" FontSize="11"/>
+                            <TextBlock Text="{Binding appointment_time, StringFormat='{}{0:hh\\:mm}'}" FontStyle="Italic" Margin="0,5,0,10" FontSize="11"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <!-- Кнопка "Начать прием" -->
+                                <Button x:Name="StartAppointmentButton" Content="Начать прием" Margin="5,0" Background="#FFC28DAB" BorderBrush="#FFAB648C" FontSize="11" Click="StartAppointment_Click">
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding app_status}" Value="Запланировано">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+
+                                <Button x:Name="ViewHistoryButton" Content="История приемов" Margin="5,0" Background="#FFC28DAB" BorderBrush="#FFAB648C" FontSize="11" Click="ViewHistory_Click">
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding app_status}" Value="Запланировано">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+
+                                <!-- Кнопка "Запись завершена" -->
+                                <Button x:Name="CompletedAppointmentButton" Content="Запись завершена" Margin="5,0" Background="#FFC28DAB" BorderBrush="#FFAB648C" FontSize="11" Click="CompleteAppointment_Click">
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding app_status}" Value="Завершено">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button x:Name="LogOutButton" FontFamily="{StaticResource CustomFont}" Background="#FFAC7695" FontSize="11" Content="Выйти из аккаунта" Margin="10" BorderBrush="#FFAB648C" Click="LogOutButton_Click"/>
+        </StackPanel>
+
+        <!-- Разделитель между колонками -->
+        <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" Background="DarkGray"/>
+
+        <!-- Правая панель с информацией -->
+        <Grid Grid.Column="2" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="22.137"/>
+                <RowDefinition Height="182.863"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Информация о пациенте -->
+            <TextBlock x:Name="ownerNameTextBlock" FontFamily="{StaticResource CustomFont}" Text="Владелец -" FontWeight="Bold" FontSize="16" Grid.Row="0" Margin="0,0,0,5"/>
+            <TextBlock x:Name="patientNameTextBlock" FontFamily="{StaticResource CustomFont}" Text="Пациент -" FontWeight="Bold" FontSize="14" Grid.Row="1" Margin="0,0,0,5"/>
+            <TextBlock x:Name="appointmentNameTextBlock" FontFamily="{StaticResource CustomFont}" Text="Приём -" FontWeight="Bold" FontSize="14" Grid.Row="2" />
+
+            <!-- Поля для ввода данных -->
+            <StackPanel Grid.Row="2" Margin="0,25,0,10" Grid.RowSpan="2">
+                <TextBox Name="Complaint" IsEnabled="{Binding IsSessionActive}" FontFamily="{StaticResource CustomFont}" materialDesign:HintAssist.Hint="Жалобы" VerticalContentAlignment="Bottom" Margin="5" Height="50"/>
+                <TextBox Name="Weight" IsEnabled="{Binding IsSessionActive}" FontFamily="{StaticResource CustomFont}" materialDesign:HintAssist.Hint="Вес животного" Margin="5"/>
+                <TextBox Name="Diagnosis" IsEnabled="{Binding IsSessionActive}" FontFamily="{StaticResource CustomFont}" materialDesign:HintAssist.Hint="Диагноз" Margin="5"/>
+                <TextBox Name="Notes" IsEnabled="{Binding IsSessionActive}" FontFamily="{StaticResource CustomFont}" materialDesign:HintAssist.Hint="Заметки" Margin="5" VerticalContentAlignment="Bottom" Height="55"/>
+            </StackPanel>
+
+            <!-- Добавление назначений -->
+            <StackPanel Grid.Row="4" Orientation="Vertical" Margin="5,10,0,10">
+
+                <CheckBox x:Name="IsMedicine" IsEnabled="{Binding IsSessionActive}" Content="Назначить лекарство" Checked="IsMedicine_Checked" Unchecked="IsMedicine_Unchecked" BorderBrush="#FFC28DAB" Background="#FFC28DAB" />
+                <!-- Блок для лекарства -->
+                <StackPanel  Orientation="Vertical" Margin="0,20,0,15">
+                    <ComboBox Name="MedicinesComboBox" IsEnabled="False"  FontFamily="{StaticResource CustomFont}" HorizontalAlignment="Left" Margin="0,5,0,0" Width="250" materialDesign:HintAssist.Hint="Лекарство" BorderBrush="#FFC28DAB"/>
+                    <TextBox Name="CommentTextBox" IsEnabled="False" FontFamily="{StaticResource CustomFont}" Width="500" HorizontalAlignment="Left" VerticalContentAlignment="Bottom" Height="45" TextWrapping="Wrap" materialDesign:HintAssist.Hint="Введите комментарий" />
+                </StackPanel>
+
+
+                <CheckBox x:Name="IsService" IsEnabled="{Binding IsSessionActive}" Content="Добавить услугу" Checked="IsService_Checked" Unchecked="IsService_Unchecked" Margin="0,15,0,0" BorderBrush="#FFC28DAB" Background="#FFC28DAB"/>
+                <!-- Блок для услуг -->
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                    <ComboBox IsEnabled="False" FontFamily="{StaticResource CustomFont}" materialDesign:HintAssist.Hint="Услуга" Name="ServicesComboBox" Width="250" BorderBrush="#FFC28DAB"/>
+                </StackPanel>
+            </StackPanel>
+            <!-- Кнопки управления -->
+            <Button Grid.Row="5" IsEnabled="{Binding IsSessionActive}" FontFamily="{StaticResource CustomFont}" Background="#FFAC7695" BorderBrush="#FFAB648C"  Content="Завершить прием" FontSize="14" Margin="5,5,4,5" Click="CompleteAppointment_Click"/>
+        </Grid>
+    </Grid>
+</Window>

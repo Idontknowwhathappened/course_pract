@@ -1,0 +1,46 @@
+﻿<Page x:Class="VeterinaryClinic.ChooseSpecialist"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:VeterinaryClinic"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ChooseSpecialist">
+    <Page.Resources>
+        <!-- Определяем стиль шрифта -->
+        <FontFamily x:Key="CustomFont">pack://application:,,,/Fonts/#Montserrat Alternates</FontFamily>
+    </Page.Resources>
+    <Grid>
+        <!-- Правое содержимое -->
+        <StackPanel Grid.Column="1">
+            <TextBlock x:Name="SpecializationTextBlock" Text="Выбор специалиста - Офтальмолог" FontFamily="{StaticResource CustomFont}" FontWeight="SemiBold" FontSize="16" Margin="10"/>
+
+            <!-- Список специалистов -->
+            <ListBox Margin="10" x:Name="DoctorsList" Height="auto" FontFamily="{StaticResource CustomFont}" DisplayMemberPath="Name" SelectionChanged="DoctorsList_SelectionChanged"/>
+
+            <!-- Панель для отображения дней текущей недели -->
+            <TextBlock Text="Текущая неделя:" FontWeight="SemiBold" FontFamily="{StaticResource CustomFont}" Margin="10,20,10,5"/>
+            <UniformGrid x:Name="CurrentWeekGrid" Columns="7" Margin="10,0,10,10"/>
+
+            <!-- Панель для отображения дней следующей недели -->
+            <TextBlock Text="Следующая неделя:" FontWeight="SemiBold" FontFamily="{StaticResource CustomFont}" Margin="10,10,10,5"/>
+            <UniformGrid x:Name="NextWeekGrid" Columns="7" Margin="10,0,10,20"/>
+
+            <!-- Выбор времени -->
+            <TextBlock Text="Выбор времени:" FontWeight="SemiBold" FontFamily="{StaticResource CustomFont}" Margin="10"/>
+            <UniformGrid x:Name="TimeSlotsGrid" Columns="10" Width="770" Rows="3" Margin="10,0,10,10" />
+
+            <!-- Поле для ввода описания жалоб -->
+            <TextBlock Text="Проблемы/жалобы:" FontWeight="SemiBold" FontFamily="{StaticResource CustomFont}" Margin="10"/>
+            <TextBox x:Name="ProblemDescriptionTextBox" FontFamily="{StaticResource CustomFont}" TextWrapping="Wrap" AcceptsReturn="True" materialDesign:TextFieldAssist.UnderlineBrush="#FFC28DAB" BorderBrush="#FFC28DAB" CaretBrush="#FFC28DAB" SelectionBrush="#FFC28DAB" VerticalScrollBarVisibility="Auto" Height="30" Margin="10" />
+
+            <!-- Кнопки управления -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="15">
+                <Button Content="Назад" Width="100" FontFamily="{StaticResource CustomFont}" Margin="5" Background="#FFDF2727" BorderBrush="#FFA70606" Click="Button_Click" />
+                <Button Content="Записаться на прием" Click="ScheduleAppointment_Click" FontFamily="{StaticResource CustomFont}" Width="210" Margin="5" Background="#FFC28DAB" BorderBrush="#FFAB648C"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
