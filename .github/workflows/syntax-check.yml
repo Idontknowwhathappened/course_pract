@@ -1,4 +1,4 @@
-name: Build and Test .NET Framework Project
+name: Build .NET Framework Project
 
 on:
   push:
@@ -13,20 +13,19 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      # Проверяем код из репозитория
+      # Checkout исходный код
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # Устанавливаем .NET Framework SDK
-      - name: Set up .NET Framework
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: 4.8
+      # Установить необходимые инструменты для работы с .NET Framework (например, MSBuild)
+      - name: Set up MSBuild
+        run: |
+          choco install visualstudio2022buildtools --package-parameters "--allfeatures --includeRecommended --includeOptional"
 
-      # Запускаем сборку проекта
+      # Запуск сборки через MSBuild
       - name: Build the project
         run: msbuild "VeterinaryClinic.sln" /p:Configuration=Release
 
-      # Проверяем синтаксические ошибки с помощью MSBuild
+      # Можно добавить этапы тестирования или проверки ошибок
       - name: Run MSBuild for syntax check
         run: msbuild "VeterinaryClinic.sln" /p:Configuration=Release /t:Restore
