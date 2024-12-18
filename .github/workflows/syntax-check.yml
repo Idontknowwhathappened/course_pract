@@ -13,10 +13,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Установить MSBuild
-        uses: microsoft/setup-msbuild@v1.0.2
-        with:
-          vs-version: '2022'
+      - name: Установить Visual Studio Build Tools
+        run: |
+          choco install visualstudio2022buildtools --version=17.5.0 --package-parameters "--add-to-path --quiet"
+
+      - name: Проверить установку MSBuild
+        run: |
+          & "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\MSBuild.exe" -version
 
       - name: Build with MSBuild
         run: |
