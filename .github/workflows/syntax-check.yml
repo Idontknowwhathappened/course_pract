@@ -15,7 +15,7 @@ jobs:
 
       - name: Установить Visual Studio Build Tools
         run: |
-          choco install visualstudio2022buildtools --version=17.5.0 --package-parameters "--add-to-path --quiet"
+          choco install visualstudio2022buildtools --package-parameters "--add-to-path --quiet"
 
       - name: Проверить установку MSBuild
         run: |
