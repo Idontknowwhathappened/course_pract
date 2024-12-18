@@ -13,12 +13,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Visual Studio Build Tools
-        uses: microsoft/setup-msbuild@v1.0.2
-        with:
-          vs-version: '2022'
-          configuration: 'Debug'
-
-      - name: Build with MSBuild
+      - name: Проверить путь к MSBuild
         run: |
-          & "C:\Program Files\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\MSBuild.exe" "VeterinaryClinic.sln" /p:Configuration=Debug
+          if (Test-Path "E:\Visual Studio 2022\MSBuild\Current\Bin\MSBuild.exe") {
+            Write-Host "MSBuild найден!"
+          } else {
+            Write-Host "MSBuild не найден по пути E:\Visual Studio 2022\MSBuild\Current\Bin\MSBuild.exe"
+          }
+
+      - name: Добавить MSBuild в PATH
+        run: |
+          $env:PATH += ";E:\Visual Studio 2022\MSBuild\Current\Bin"
+          & "E:\Visual Studio 2022\MSBuild\Current\Bin\MSBuild.exe" "VeterinaryClinic.sln" /p:Configuration=Debug
