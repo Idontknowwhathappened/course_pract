@@ -24,4 +24,4 @@ jobs:
 
       - name: Build with MSBuild (custom path)
         run: |
-          "E:\Visual Studio 2022\MSBuild\Current\Bin\MSBuild.exe" VeterinaryClinic.sln /p:Configuration=Debug
+          & "E:\Visual Studio 2022\MSBuild\Current\Bin\MSBuild.exe" "VeterinaryClinic.sln" /p:Configuration=Debug
