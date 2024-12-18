@@ -19,7 +19,7 @@ jobs:
 
       # Запуск сборки через MSBuild
       - name: Build the project
-        run: "D:\\Microsoft Visual Studio\\2022\\BuildTools\\MSBuild\\Current\\Bin\\MSBuild.exe VeterinaryClinic.sln /p:Configuration=Release"
+        run: '& "D:\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\MSBuild.exe" VeterinaryClinic.sln /p:Configuration=Release'
 
       # Проверка восстановления пакетов и сборка
       - name: Run MSBuild for syntax check
