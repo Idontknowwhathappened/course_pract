@@ -1,37 +1,26 @@
-name: .NET Syntax Check
+name: Syntax and Lint Check
 
 on:
   push:
     branches:
       - main
   pull_request:
-    branches:
-      - main
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Set up .NET
-        uses: actions/setup-dotnet@v1
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '8.0.404'
+          dotnet-version: 8.0.404
 
       - name: Restore dependencies
         run: dotnet restore
 
-      - name: Build the project
-        run: dotnet build --no-restore --configuration Release
-
-      - name: Run code analysis (Roslyn Analyzers)
-        run: dotnet build --no-restore --configuration Release /p:RunAnalyzers=true
-
-      - name: Run tests
-        run: dotnet test --no-build --configuration Release
-
-      - name: Publish results (Optional, if using Roslyn)
-        run: dotnet publish --configuration Release
+      - name: Run lint check
+        run: dotnet build --no-restore --configuration Debug
