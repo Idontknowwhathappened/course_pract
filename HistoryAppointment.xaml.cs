@@ -76,7 +76,6 @@ namespace VeterinaryClinic
                 // Уведомляем WPF о том, что данные изменились
                 OnPropertyChanged(nameof(Appointments));
             }
-            
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -97,7 +96,5 @@ namespace VeterinaryClinic
                 ComplaintsTextBlock.Text = selectedAppointment.Description;
             }
         }
-
     }
-
 }

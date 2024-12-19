@@ -48,7 +48,6 @@ namespace VeterinaryClinic
             RoleComboBox.DisplayMemberPath = "name";
             RoleComboBox.SelectedValuePath = "role_id";
         }
-        
         private void ClearForm()
         {
             FirstNameTextBox.Text = string.Empty;
@@ -108,7 +107,6 @@ namespace VeterinaryClinic
                     NumberTextBox.Text = selectedRow["NumberPhone"].ToString();
                     string specializationName = selectedRow["Specialization"].ToString();
                     DoctorSpecializationComboBox.SelectedValue = FindSpecializationIdByName(specializationName);
-                    
                 }
                 string roleName = selectedRow["Role"].ToString();
                 RoleComboBox.SelectedValue = FindRoleIdByName(roleName);

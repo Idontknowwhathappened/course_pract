@@ -22,11 +22,11 @@ namespace VeterinaryClinic
             string password = PasswordBox.Password;
             string ownerName = OwnerNameTextBox.Text;
             string ownerLastName = OwnerLastNameTextBox.Text;
-            string ownerPatronymic = OwnerPatronymicTextBox.Text; 
+            string ownerPatronymic = OwnerPatronymicTextBox.Text;
             string contactDetails = ContactDetailsTextBox.Text;
 
             // Проверка на заполненность полей
-            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(email) ||
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(email) || 
                 string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(ownerName) ||
                 string.IsNullOrWhiteSpace(ownerLastName) || string.IsNullOrWhiteSpace(contactDetails))
             {
