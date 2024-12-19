@@ -25,9 +25,31 @@ jobs:
       - name: Display current directory
         run: pwd
 
-      # Линтинг с помощью StyleCop
-      - name: Lint code with StyleCop
-        run: msbuild "VeterinaryClinic.sln" /p:Configuration=Release /t:Build /warnaserror
+      # Установить StyleCop.Analyzers
+      - name: Install StyleCop.Analyzers
+        run: nuget install StyleCop.Analyzers -Version 1.2.0-beta.435 -OutputDirectory ./packages
+
+      # Установить FxCopAnalyzers
+      - name: Install FxCopAnalyzers
+        run: nuget install Microsoft.CodeAnalysis.FxCopAnalyzers -Version 3.3.2 -OutputDirectory ./packages
+
+      # Добавить StyleCop и FxCop в проект
+      - name: Add analyzers to project
+        run: |
+          echo '<Project Sdk="Microsoft.NET.Sdk">' > Directory.Build.props
+          echo '  <PropertyGroup>' >> Directory.Build.props
+          echo '    <AnalysisLevel>latest</AnalysisLevel>' >> Directory.Build.props
+          echo '    <EnableNETAnalyzers>true</EnableNETAnalyzers>' >> Directory.Build.props
+          echo '  </PropertyGroup>' >> Directory.Build.props
+          echo '  <ItemGroup>' >> Directory.Build.props
+          echo '    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.435" PrivateAssets="All" />' >> Directory.Build.props
+          echo '    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.2" PrivateAssets="All" />' >> Directory.Build.props
+          echo '  </ItemGroup>' >> Directory.Build.props
+          echo '</Project>' >> Directory.Build.props
+
+      # Линтинг кода с помощью StyleCop и FxCop
+      - name: Lint code with StyleCop and FxCop
+        run: msbuild "VeterinaryClinic.sln" /p:Configuration=Release /warnaserror
 
       # Сборка проекта
       - name: Build the project

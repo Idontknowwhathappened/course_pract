@@ -278,6 +278,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="ClassDiagram.cd" />
+    <None Include="stylecop.json" />
     <None Include="VeterinaryClinicDataSet.xsc">
       <DependentUpon>VeterinaryClinicDataSet.xsd</DependentUpon>
     </None>
