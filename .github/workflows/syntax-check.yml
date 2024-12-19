@@ -21,18 +21,6 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1
 
-      # Проверка структуры проекта
-      - name: Validate .csproj file
-        run: |
-          if not exist "VeterinaryClinic.csproj" (
-            echo "Error: VeterinaryClinic.csproj not found."
-            exit 1
-          )
-
       # Линтинг кода с помощью StyleCop
       - name: Lint code with StyleCop
         run: msbuild "VeterinaryClinic.sln" /p:Configuration=Release /warnaserror
-
-      # Сборка проекта
-      - name: Build the project
-        run: msbuild "VeterinaryClinic.sln" /p:Configuration=Release
