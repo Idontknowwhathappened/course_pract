@@ -7,17 +7,21 @@ on:
 
 jobs:
   lint:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v1
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
 
-      - name: Lint a specific project
-        run: msbuild "VeterinaryClinic.csproj" /p:Configuration=Release /warnaserror
-
-      - name: Build the solution
-        run: msbuild "VeterinaryClinic.sln" /p:Configuration=Release
+      - name: Run Super-Linter
+        uses: github/super-linter@v4
+        env:
+          VALIDATE_CSHARP: true
+          DEFAULT_BRANCH: main
+          ACTIONS_RUNNER_DEBUG: true
+          FILTER_REGEX_EXCLUDE: .*Test.*
