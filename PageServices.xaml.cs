@@ -22,10 +22,9 @@ namespace VeterinaryClinic
         {
             try
             {
-
-               string name = ServiceNameTextBox.Text;
-               string description = ServiceDescriptionTextBox.Text;
-               decimal price = Convert.ToDecimal(ServicePriceTextBox.Text);
+                string name = ServiceNameTextBox.Text;
+                string description = ServiceDescriptionTextBox.Text;
+                decimal price = Convert.ToDecimal(ServicePriceTextBox.Text);
 
                 if (string.IsNullOrWhiteSpace(name))
                 {

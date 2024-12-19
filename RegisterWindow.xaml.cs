@@ -26,7 +26,7 @@ namespace VeterinaryClinic
             string contactDetails = ContactDetailsTextBox.Text;
 
             // Проверка на заполненность полей
-            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(email) || 
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(email) ||
                 string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(ownerName) ||
                 string.IsNullOrWhiteSpace(ownerLastName) || string.IsNullOrWhiteSpace(contactDetails))
             {

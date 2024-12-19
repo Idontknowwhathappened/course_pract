@@ -56,22 +56,22 @@ namespace VeterinaryClinic
                                 Height = 24,
                                 HorizontalAlignment = HorizontalAlignment.Center,
                             },
-                                new TextBlock
-                                {
-                                    Text = servicesName,
-                                    FontSize = 13,
-                                    TextWrapping = TextWrapping.Wrap,
-                                    FontWeight = FontWeights.Bold,
-                                    TextAlignment = TextAlignment.Center,
-                                },
-                                new TextBlock
-                                {
-                                    Text = price.ToString(),
-                                    FontSize = 12,
-                                    TextAlignment = TextAlignment.Center,
-                                }
+                            new TextBlock
+                            {
+                                Text = servicesName,
+                                FontSize = 13,
+                                TextWrapping = TextWrapping.Wrap,
+                                FontWeight = FontWeights.Bold,
+                                TextAlignment = TextAlignment.Center,
+                            },
+                            new TextBlock
+                            {
+                                Text = price.ToString(),
+                                FontSize = 12,
+                                TextAlignment = TextAlignment.Center,
                             }
-                        },
+                        }
+                    },
                     Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFC28DAB")),
                     BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFAB648C")),
                     Tag = serviceId
