@@ -23,5 +23,5 @@ jobs:
         env:
           VALIDATE_CSHARP: true
           DEFAULT_BRANCH: main
+          FILTER_REGEX_EXCLUDE: .*VeterinaryClinicDataSet.cs
           ACTIONS_RUNNER_DEBUG: true
-          FILTER_REGEX_EXCLUDE: .*Test.*
