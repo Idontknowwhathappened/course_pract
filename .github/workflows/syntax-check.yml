@@ -13,8 +13,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Run Super-Linter
-        uses: github/super-linter@v4
-        env:
-          VALIDATE_CSHARP: true
-          DEFAULT_BRANCH: main
+      - name: Lint a specific project
+        run: msbuild "VeterinaryClinic.csproj" /p:Configuration=Release /warnaserror
+
+      - name: Build the solution
+        run: msbuild "VeterinaryClinic.sln" /p:Configuration=Release
