@@ -1,26 +1,20 @@
-name: Build .NET Framework Project
+name: Lint C# Code
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
-  build:
-    runs-on: windows-latest
+  lint:
+    runs-on: ubuntu-latest
 
     steps:
-      # Checkout исходный код
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # Настройка MSBuild
-      - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v1
-
-      # Линтинг кода с помощью StyleCop
-      - name: Lint code with StyleCop
-        run: msbuild "VeterinaryClinic.sln" /p:Configuration=Release /warnaserror
+      - name: Run Super-Linter
+        uses: github/super-linter@v4
+        env:
+          VALIDATE_CSHARP: true
+          DEFAULT_BRANCH: main
